@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include<time.h>
 
+//apresenta a parte visual do menu
 int fMenuGeral(int opc)
 {
 	int op;
@@ -27,11 +28,22 @@ int fMenuGeral(int opc)
 			 	printf("opcao invalida\n");
 			 	op = -1;
 			 }
-	
+			 return op;
 			}
 		
 	}while (op = - 1);
-	return op;
+	
+}
+
+//mostra as pecas do domino
+void fApresentar(struct Pc Pec[28])
+{
+	int i, j;
+	for(i = 0; i < 28; i++)
+	{
+		printf("[%d|%d]\t", Pec[i].lado1, Pec[i].lado2);	
+	}
+	printf("\n");	
 }
 
 //mostra as pecas do domino
