@@ -38,17 +38,17 @@ void fEmbaralharPecas(struct Pc Pec[28])
 }
 
 //inicializa o menu
-void fInicializarMenu(int oper)
+void fInicializarMenu(int oper, struct Pc Pec[28])
 {
 	int opr;
-	struct Pc Pecas[28];
+	
 	do
 	{
 		opr = fMenuGeral(opr);
 		switch (opr)
 		{
 			case 1:
-				fApresentar(Pecas);
+				fApresentar(Pec);
 				break;
 			case 2:	
 				break; 
