@@ -2,19 +2,19 @@
 //Andre Cavacanti, Marcello Linard, Thiago amaral
 
 
-#include"Dom_BGR_Model.cpp"
-#include"Dom_BGR_Controller.cpp"
+#include "Dom_BGR_Model.cpp"
+#include "Dom_BGR_Controller.cpp"
 #include <stdio.h>
 #include <stdlib.h>
 #include<time.h>
 
-main()
+int main()
 {
 	struct Pc Pecas[28];
 	int opca;
 	
 	fGerarPecas(Pecas);
 	fEmbaralharPecas(Pecas);
-	fInicializarMenu(opca);
+	fInicializarMenu(opca, Pecas);
 	
 }
