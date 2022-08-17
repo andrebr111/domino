@@ -41,9 +41,10 @@ void fEmbaralharPecas(struct Pc Pec[28])
 void fInicializarMenu(int oper)
 {
 	int opr;
+	struct Pc Pecas[28];
 	do
 	{
-		opr = fMenuGeral(opc);
+		opr = fMenuGeral(opr);
 		switch (opr)
 		{
 			case 1:
@@ -52,5 +53,5 @@ void fInicializarMenu(int oper)
 			case 2:	
 				break; 
 			}
-	}while( opr != 2)
+	}while( opr != 2);
 }
