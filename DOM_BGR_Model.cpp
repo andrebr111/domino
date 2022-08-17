@@ -3,14 +3,15 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include<time.h>
+#ifndef Pc_H_
+#define Pc_H_
 
-typedef struct Pc
+
+struct Pc
 {
 	int lado1;
 	int lado2;
 	char status;
-}Pec[28];
+};
 
-
-
+#endif 
