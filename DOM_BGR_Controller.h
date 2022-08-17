@@ -8,4 +8,4 @@
 
 void fGerarPecas(struct Pc Pec[28]);
 void fEmbaralharPecas(struct Pc Pec[28]);
-void fInicializarMenu(int oper);
+void fInicializarMenu(int oper, struct Pc Pec[28]);
