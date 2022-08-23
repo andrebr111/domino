@@ -13,8 +13,7 @@ int main()
 	struct Pc Pecas[28];
 	int opca;
 	
-	fGerarPecas(Pecas);
-	fEmbaralharPecas(Pecas);
 	fInicializarMenu(opca, Pecas);
+
 	
 }
