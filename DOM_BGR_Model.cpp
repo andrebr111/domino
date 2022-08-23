@@ -3,8 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#ifndef Pc_H_
-#define Pc_H_
+#include<time.h>
+#ifndef Model_H_
+#define Model_H_
 
 
 struct Pc
@@ -12,6 +13,12 @@ struct Pc
 	int lado1;
 	int lado2;
 	char status;
-};
+} Pec[28], aux;
+
+struct Tmesa
+{
+	int lado1;
+	int lado2;
+}Mesa[28];
 
 #endif 
