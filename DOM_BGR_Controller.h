@@ -10,3 +10,5 @@ void fGerarPecas(struct Pc Pec[28]);
 void fEmbaralharPecas(struct Pc Pec[28]);
 void fInicializarMenu(int oper, struct Pc Pec[28]);
 void fIniciarjogo(struct Pc Pec[28]);
+void fprimeirapeca(struct Pc Pec[28]);
+void fmenujogar(struct Pc Pec[28], char oper);
