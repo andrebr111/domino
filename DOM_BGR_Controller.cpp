@@ -60,22 +60,19 @@ void fInicializarMenu(int oper, struct Pc Pec[28])
 				break;
 			case 6:	
 				break;
-			case 7:
+			case 0:
 				break;					 
 			}
-	}while( opr != 2);
+	}while( opr != 0);
 }
 
 //inicia o jogo
 void fIniciarjogo(struct Pc Pec[28])
 {
-	int i, r , u;
+	int i;
+	char opr;
 	
 	fGerarPecas(Pec);
-	
-	aux.status = ' ';
-	aux.lado1 = 0; 
-	aux.lado2 = 1;
 	
 	for(i = 0; i < 28; i++)
 	{
@@ -92,8 +89,20 @@ void fIniciarjogo(struct Pc Pec[28])
 	{
 		Pec[i].status = '2';	
 	}
+
+	fprimeirapeca(Pec);
+}
+
+//seleciona a primeira peca que vai na mesa 
+void fprimeirapeca(struct Pc Pec[28])
+{
+	int i, u;
+	char z;
+	char opr;
 	
-	fApresentar(Pec);
+	aux.status = ' ';
+	aux.lado1 = 0; 
+	aux.lado2 = 1;
 	
 	for(i=0; i<=13; i++)
 	{
@@ -118,21 +127,47 @@ void fIniciarjogo(struct Pc Pec[28])
 			}
 		}	
 	}
-	
-	if(Pec[u].status == '1')
-	{
-		printf("jogador 1 comecou ");
-	}
-	else
-	{
-		printf("jogador 2 comecou ");
-	}
-
 	Mesa[0].lado1 = aux.lado1;
 	Mesa[0].lado2 = aux.lado2;
+	
+	fMesa(Pec,u);
+	
+	if(Pec[u].status=='1')
+	{
+    z='2';
+    } 
+    else
+    {
+    z='1';
+    }
+    Pec[u].status = 'm';
+    fApresentar(Pec, u, z);
+    fmenujogar(Pec, opr);
+}
 
-	Pec[u].status = 'm';
-
-	printf("MESA: [%d|%d] ", Pec[u].lado1, Pec[u].lado2);
-	printf("MESA: [%d|%d] ", Mesa[0].lado1, Mesa[0].lado2);
+//inicia as opcoes do jogador
+void fmenujogar(struct Pc Pec[28], char oper)
+{
+	char opr;
+	int u;
+	do
+	{
+		char opr;
+		opr = fjogar(Pec, u, opr);
+		switch (opr)
+		{
+			case 'J':
+			case 'j':	
+				break;
+			case 'C':
+			case 'c':	
+				break;
+			case 'P':
+			case 'p':
+				break;
+			case 'S':
+			case 's':
+				break;				 
+		}
+	}while( opr != 'S' && opr != 's');
 }
