@@ -8,3 +8,5 @@
 
 int fMenuGeral(int opc);
 void fApresentar(struct Pc Pec[28]);
+void fMesa(struct Pc Pec[28], int u);
+int fjogar(struct Pc Pec[28], char opc, int u);
