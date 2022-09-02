@@ -19,6 +19,7 @@ struct Tmesa
 {
 	int lado1;
 	int lado2;
+	char status;
 }Mesa[28];
 
 #endif 
