@@ -8,16 +8,15 @@
 #include<time.h>
 
 //apresenta a parte visual do menu
-int fMenuGeral(int opc)
+int fMenuGeral(int opc) 
 {
 	int op;
-	do
-	{
+	do {
 		op = -1;
 		while (op != 0)
-			{
-			printf("\n             -domino- ");	
-			printf("\n--------------------------------------\n");	
+		 {
+			printf("\n             -domino- ");
+			printf("\n--------------------------------------\n");
 			printf("|1 - Iniciar jogo (2 jogadores)        |\n");
 			printf("|2 - Iniciar jogo (contra o computador)|\n");
 			printf("|3 - Retornar ao jogo interrompido     |\n");
@@ -28,94 +27,165 @@ int fMenuGeral(int opc)
 			printf("----------------------------------------\n");
 			printf("\nDigite a sua opcao: ");
 			scanf("%d", &op);
+			//fclear();
 			if( op != 1 && op != 2 && op != 3 && op != 4 && op != 5 && op != 6 && op != 0)
-			 {
-			 	printf("opcao invalida\n");
-			 	op = -1;
-			 }
-			 return op;
+			{
+				printf("opcao invalida\n");
+				op = -1;
 			}
-		
-	}while (op = - 1);
-	
+			return op;
+		}
+
+	} while (op = - 1);
+
 }
 
 //mostra as pecas do domino
-void fApresentar(struct Pc Pec[28], int u, char z)
-{
-	int i, h;
-	
-	if(z=='1')
+void fApresentar(struct Pc Pec[28], char z)
+ {
+	int i, k ;
+	k = 1;
+	if(z=='1') 
 	{
 		printf("\njogador 1:\n ");
-		printf("Pecas: ");
-		for(i = 0; i < 28; i++)
+	}
+	else 
+	{
+		printf("jogador 2:\n ");
+	}
+	printf("Pecas: ");
+	for(i = 0; i < 28; i++) 
+	{
+		if(Pec[i].status == z) 
 		{
-			if(Pec[i].status == '1')
-			{
-				h = i + 1;
-				printf("%d.[%d|%d]\t", h, Pec[i].lado1, Pec[i].lado2);
-			}
-	 	}
- 	}
- 	else
- 	{
-	 	printf("jogador 2:\n ");
-	 	printf("Pecas: ");
-	 	for(i = 0; i < 28; i++)
-	 	{
-	 		if(Pec[i].status == '2')
-			{
-				h = i + 1;
-				printf("[%d|%d]\t", h, Pec[i].lado1, Pec[i].lado2);
-			}
+			printf("%d.[%d|%d]\t",k , Pec[i].lado1, Pec[i].lado2);
+			k++;
 		}
 	}
 	printf("\n");
 }
 
-// gerar mesa
-void fMesa(struct Pc Pec[28], int u)
+void fprimeiro(struct Pc Pec[28],int u)
 {
-	int i;
 	if(Pec[u].status == '1')
 	{
 		printf("\njogador 1 comecou ");
-	}
-	else
+	} else 
 	{
 		printf("\njogador 2 comecou ");
 	}
-	
-	printf("\n =============\n");
-	printf(" |MESA: [%d|%d]|\n ", Pec[u].lado1, Pec[u].lado2);
-	printf("=============\n");
 }
-//opcoes do jogador 
-int fjogar(struct Pc Pec[28],char opc, int u)
+
+// gerar mesa
+void fMesa(struct Tmesa Mesa[], int i)
+ {
+	printf("\n ===========================\n");
+	printf(" MESA:");
+		printf("[%d|%d] ", Mesa[i].lado1, Mesa[i].lado2);
+	
+	printf("\t\n===========================\n");
+}
+
+//opcoes do jogador
+int fjogar(int opc,int ladD, int ladE)
+ {
+	int op;
+			printf("\n-----------------------------------------------\n");
+			printf("|1 - Jogar (possiveis %d ou %d)                  |\n",ladE, ladD);
+			printf("|2 - Comprar                                   |\n");
+			printf("|3 - Passar                                    |\n");
+			printf("|0 - Sair (interrorper o jogo)                 |\n");
+			printf("------------------------------------------------\n");
+			printf("\nDigite a sua opcao: ");
+			scanf("%d", &op);
+			return op;
+}
+
+//peca que ira selecionar
+int fescpec(int opc)
+{
+	int op;
+	printf("Escolha a peca para jogar (0 para desistir): ");
+	scanf("%d",&op);
+	return op;
+}
+
+//lado que ira jogar
+int fladmesa(char opr)
 {
 	char op;
 	
-	do
+	printf("Escolha o lado da Mesa: Esquerdo/Direito (E/D): ");
+	scanf("%s",&op);
+	return op;
+}
+
+void fmsgopinvalida()
+{
+	printf("opcao invalida\n");
+}
+
+void fmsgop()
+{
+	printf("Peca com numeracao errada");
+}
+
+void fmsgcomp()
+{
+	printf("nao ha mais pecas para compra");
+}
+
+void fmsgfimjogo(int fim)
+{
+	if(fim==1)
+    {
+       printf("Jogador 1 venceu");
+	}
+	else if(fim==2)
 	{
-		op = 'V';
-		while (op != 'S' && op != 's')
-		{
-			printf("\n----------------------------------------------\n");	
-			printf("|J - Jogar (possiveis %d ou %d)                 |\n",Mesa[0].lado1, Mesa[0].lado2);
-			printf("|C - Comprar                                   |\n");
-			printf("|P - Passar                                    |\n");
-			printf("|S - Sair (interrorper o jogo)                 |\n");
-			printf("------------------------------------------------\n");
-			printf("\nDigite a sua opcao: ");
-			scanf("%s", &op);
-			
-			if(op != 'J' &&  op != 'j' && op != 'C' &&  op != 'c' && op != 'P' &&  op != 'p' && op != 'S' &&  op != 's' )
-			{
-		 		printf("opcao invalida\n");
-		 		op = 'V';
-		 	}
-		 	return op;
-		}
-	}while( op = 'V');
+		printf("Jogador 2 venceu");
+	}
+	else if(fim==3)
+	{
+		printf("Interrrompeu o jogo");
+	}
+	else if(fim == 4)
+	{
+		printf("Empate (jogadores tem o mesmo numero de pecas e somatorias)\n");
+	}
+}
+
+void ladoErrado()
+{
+	
+	printf("Opcao invalida de lado na mesa\n");
+	
+}
+
+void fnumeracaoErrada()
+{
+	
+	printf("Peca com numeracao errada\n");
+	
+}
+
+void fcontinuajogo()
+{
+	printf("Ainda ha pecas para serem compradas ou jogadas\n");
+}
+
+void fsemjoagadas()
+{
+	printf("nao ha mais jogadas possiveis\n");
+}
+
+void fcontagem()
+{
+	printf("pela contagem:\n");
+}
+
+void fclear() 
+{
+	char carac;
+	while( (carac = fgetc(stdin)) != EOF && carac != '\n') {}
 }
