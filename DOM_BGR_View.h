@@ -7,6 +7,19 @@
 #include<time.h>
 
 int fMenuGeral(int opc);
-void fApresentar(struct Pc Pec[28]);
-void fMesa(struct Pc Pec[28], int u);
-int fjogar(struct Pc Pec[28], char opc, int u);
+void fApresentar(struct Pc Pec[28], char z);
+void fMesa(struct Tmesa Mesa[],int i);
+void fprimeiro(struct Pc Pec[28],int u);
+int fjogar(int opc, int ladD, int ladE);
+int fescpec(int opc);
+int fladmesa(char opr);
+void fmsgop();
+void fmsgcomp();
+void fmsgfimjogo(int fim);
+void fmsgopinvalida();
+void ladoErrado();
+void fnumeracaoErrada();
+void fcontinuajogo();
+void fsemjoagadas();
+void fcontagem();
+void fclear();
