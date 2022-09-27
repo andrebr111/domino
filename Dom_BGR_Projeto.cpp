@@ -8,12 +8,7 @@
 #include <stdlib.h>
 #include<time.h>
 
-int main()
-{
-	struct Pc Pecas[28];
-	int opca;
-	
-	fInicializarMenu(opca, Pecas);
-
-	
+main()
+{	
+	fInicializarMenu();	
 }
